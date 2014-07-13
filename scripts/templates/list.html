@@ -1,0 +1,40 @@
+<script type="text/template" id="lister">
+
+<div class="<%= classes %>">
+<ul>
+
+<% if ( image ) { %>
+	<img src="<%= image.src %>" />
+<% } %>
+
+<% if ( items ) {
+	_.each( items, function( item, key ) { %>
+	<% if ( item.data ) { %>
+	<li class="<%= item.classes %>" data-value="<%= item.data %>">
+	<% } else { %>
+	<li>
+	<% } %>
+	<% if ( item.icon ) { %>
+		<% console.log( "Icon item is %o", item ); %>
+		<% if ( item.icon.href ) { %>
+			<a href="<%= item.href %>"><<%= item.icon.tag %> class="<%= item.icon.classes %>"></<%= item.icon.tag %>></a>
+		<% } else { %>
+			<<%= item.icon.tag %> class="<%= item.icon.classes %>"></<%= item.icon.tag %>>
+		<% } %>
+	<% } %>
+
+	<% if ( item.href ) { %>
+		<span class="label">
+			<a href="<%= item.href %>"><%= item.label %></a>
+		</span>
+	<% } else { %>
+		<span class="label"><%= item.label %></span>
+	<% } %>
+	</li>
+	<% }); %>
+<% } %>
+
+</ul>
+</div>
+
+</script>

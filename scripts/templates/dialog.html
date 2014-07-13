@@ -1,0 +1,44 @@
+<script type="text/template" id="dialoger">
+
+<div class="dialog <%= classes %>">
+	<% if ( directions ) { %>
+	<div class="directions">
+		<% if ( directions.navigate ) { %>
+		<div class="arrows">
+			<i class="icon fa fa-chevron-left"><span>Prev</span></i>
+		</div>
+		<% } %>
+		
+		<div class="text">
+			<h2><%= title %></h2>
+			<%= instructions %>
+		</div>
+		
+		<% if ( directions.navigate ) { %>
+		<div class="arrows">
+			<i class="icon fa fa-chevron-right"><span>Next</span></i>
+		</div>
+		<% } %>
+		
+		<div class="ground"></div>
+	</div>
+	<% } %>
+
+	<div class="content">
+		<div class="option <%= name %>">
+			<ul>
+			<% _.each( selections, function( html, selection ) { %>
+				<li>
+					<% if ( selection.icon ) { %>
+						<%= selection.icon %>
+					<% } %>
+					
+					<a href="<%= selection.link %>" target="<%= selection.target %>"><%= selection.label %></a>
+				</li>
+			<% }); %>
+			</ul>
+		</div>
+	</div>
+</div>
+
+</script>

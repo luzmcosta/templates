@@ -1,0 +1,25 @@
+<script type="text/template" id="messenger">
+
+<div class="<%= type %>">
+
+<% if ( icon ) { %>
+	<<%= icon.tag %> class="<%= icon.classes %>"></<%= icon.tag %>>
+<% } %>
+
+<% if ( image ) {
+	if ( image.href ) { %>
+		<a href="<%= image.href %>"><img src="<%= image.src %>" /></a>
+	<% } else { %>
+		<img src="<%= image.src %>" />
+	<% } %>
+<% } %>
+
+<% if ( message ) { %>
+	<div class="message">
+		<%= message %>
+	</div>
+<% } %>
+
+</div>
+
+</script>

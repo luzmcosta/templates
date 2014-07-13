@@ -1,0 +1,53 @@
+<script type="text/template" id="table">
+
+<% _.each( table.current, function( section, index ) { %>
+
+	<% var group = section.group; %>
+
+<table class="<%= table.classes %>" data-group="<%= group %>">
+
+<thead>
+	<tr>
+	<% _.each( table.header, function( th, key ) { %>
+		<% if ( order[ key ] === false ) {
+			return;
+		} else { %>
+		<th class="<%= th.name %><%= th.classes %>" data-column="<%= th.name %>">
+			<%= th.value %>
+
+			<% if ( th.icon ) { %>
+				<i class="<%= th.icon %>"></i>
+			<% } %>
+
+			<% if ( th.sort ) { %>
+				<i class="<%= th.sort %>"></i>
+			<% } %>
+		</th>
+		<% } %>
+	<% }); %>
+	</tr>
+</thead>
+
+<tbody>
+	<% _.each( table.body, function( model, id ) { %>
+	<% if ( group === model.group ) { %>
+		<% _.each( model.item, function( row, name ) { %>
+		<tr>
+		<% _.each( row, function( column, key ) { %>
+			<% if ( order[ key ] === false ) {
+				return;
+			} else { %>
+			<td>
+				<%= column.value %>
+			</td>
+			<% } %>
+		<% }); %>
+		</tr>
+		<% }); %>
+	<% } %>
+	<% }); %>
+<tbody>
+
+</table>
+<% }); %>
+</script>
